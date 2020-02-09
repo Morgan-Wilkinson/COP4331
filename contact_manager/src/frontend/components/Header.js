@@ -18,7 +18,7 @@ export class Header extends Component {
                                 
                                 <NavDropdown.Divider />
                                 {/* Maybe make a edit button in the contact page?*/}
-                                <NavDropdown.Item href="#delete">Delete Contacts? This is a placeholder</NavDropdown.Item>
+                                <NavDropdown.Item href="/delete">Delete Contacts? This is a placeholder</NavDropdown.Item>
                             </NavDropdown>
                     </Nav>
                     <Nav>

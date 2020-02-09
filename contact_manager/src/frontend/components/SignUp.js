@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Formik } from "formik";
 import * as yup from "yup";
-
-//import * as code from '../../backend/js/modcode.js'
+import MD5 from '../../backend/js/md5'
 
 import { Button, Form, InputGroup, Col } from 'react-bootstrap'
 import { Container } from 'react-bootstrap';
@@ -30,6 +29,7 @@ export class SignUp extends Component {
     // that does this already. Check with team to see what route we wish to take.
 
     registerData = (event) => {
+        var urlBase = 'http://cop4331-project.com/API';
         // Stops form submission if the form is empty or in default state.
         event.preventDefault();
 
@@ -39,12 +39,22 @@ export class SignUp extends Component {
         var object = {};
         // Assigns the appropriate value and key for each item in the form.
         formData.forEach((value, key) => {object[key] = value});
+        object["password"] = MD5(object["password"])
         // Creates Json
         var json = JSON.stringify(object); 
         this.setState({xvalue: json});
 
-        // Testing alert
-        alert(json);
+        var url = urlBase + '/Login.php';
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url, false);
+        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+        try
+        {
+            xhr.send(json);
+            var jsonObject = JSON.parse( xhr.responseText );
+            console.log(jsonObject.success)
+        } catch (error) {}
     }
     
 
@@ -136,7 +146,7 @@ export class SignUp extends Component {
                             <Form.Label>Password</Form.Label>
                             <InputGroup>
                                 <InputGroup.Prepend>
-                                <InputGroup.Text id="inputGroupPrepend">🔑</InputGroup.Text>
+                                <InputGroup.Text id="inputGroupPrepend"><span>🔑</span></InputGroup.Text>
                                 </InputGroup.Prepend>
                                 <Form.Control
                                 type="password"

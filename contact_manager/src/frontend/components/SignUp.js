@@ -44,9 +44,9 @@ export class SignUp extends Component {
         var json = JSON.stringify(object); 
         this.setState({xvalue: json});
 
-        var url = urlBase + '/Login.php';
+        var url = urlBase + '/SignUp.php';
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", url, false);
+        xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
         try

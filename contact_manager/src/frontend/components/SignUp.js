@@ -25,7 +25,7 @@ export class SignUp extends Component {
         let val = event.target.value;
         this.setState({[nam]: val});
     }
-    /* This code is an event handler that will take the form data and transform it into a JSON
+    // This code is an event handler that will take the form data and transform it into a JSON
     // This might not be need since we already have doLogin and doSignUp in the code.js file
     // that does this already. Check with team to see what route we wish to take.
 
@@ -44,9 +44,9 @@ export class SignUp extends Component {
         this.setState({xvalue: json});
 
         // Testing alert
-        alert("Here" + json);
+        alert(json);
     }
-    */
+    
 
     render() {
         const schema = yup.object({

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import { Button, ButtonToolbar, Container } from 'react-bootstrap';
+import { Button, ButtonToolbar } from 'react-bootstrap';
 
 export class MasterPage extends Component {
     render() {

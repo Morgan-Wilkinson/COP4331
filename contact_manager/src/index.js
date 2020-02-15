@@ -9,6 +9,7 @@ import SignUp from './frontend/components/SignUp.js';
 import ContactList from './frontend/components/ContactList.js';
 import NotFound from './frontend/components/NotFound.js';
 import MasterPage from './frontend/components/MasterPage.js';
+import Contacts from './frontend/components/Contacts.js';
 
 const routing = (
     <Router>
@@ -19,7 +20,7 @@ const routing = (
             <Route path="/about" component={About} /> 
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
-            <Route path="/contacts" component={ContactList} />
+            <Route path="/contacts" component={Contacts} />
             <Route component={NotFound} />
             </Switch>
         </div>

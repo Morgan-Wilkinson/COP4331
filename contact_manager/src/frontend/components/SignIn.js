@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
+import { Route, BrowserRouter, Redirect as Router, Redirect } from 'react-router-dom'
 import { Button, Form } from 'react-bootstrap'
 import { Container } from 'react-bootstrap';
 import MD5 from '../../backend/js/md5'
 
 export class SignIn extends Component {
-
-    registerData = (event) => {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            login: "",
+            password: ""
+        };
+    }
+    // Sends data to signin
+    sendLogin = (event) => {
         var urlBase = 'http://cop4331-project.com/API';
         // Stops form submission if the form is empty or in default state.
         event.preventDefault();
@@ -20,7 +29,7 @@ export class SignIn extends Component {
         // Creates Json
         var json = JSON.stringify(object); 
         this.setState({xvalue: json});
-
+        
         var url = urlBase + '/Login.php';
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url, true);
@@ -29,7 +38,13 @@ export class SignIn extends Component {
         try
         {
             xhr.send(json);
+            
             var jsonObject = JSON.parse( xhr.responseText );
+            console.log(jsonObject.ID)
+
+            if (jsonObject.ID != 0){
+                return <Redirect to='/contacts' />
+            }
         } catch (error) {}
     }
 
@@ -37,10 +52,14 @@ export class SignIn extends Component {
         return (
             <div>
                 <Container>
-                    <Form>
+                    <Form id="myForm" noValidate onSubmit={this.sendLogin}>
                         <Form.Group controlId="login">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control type="text" placeholder="Username" />
+                            <Form.Control 
+                            type="text" 
+                            placeholder="Username" 
+                            name="username"
+                            />
                             <Form.Text className="text-muted">
                             It's nice to see you again!
                             </Form.Text>
@@ -48,7 +67,11 @@ export class SignIn extends Component {
 
                         <Form.Group controlId="password">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control 
+                            type="password" 
+                            placeholder="Password" 
+                            name="password"
+                            />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Submit

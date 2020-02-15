@@ -18,16 +18,15 @@ export class SignUp extends Component {
             password: ""
         };
     }
-
+    
     changeHandler = (event) => {
         let nam = event.target.name;
         let val = event.target.value;
         this.setState({[nam]: val});
     }
-    // This code is an event handler that will take the form data and transform it into a JSON
-    // This might not be need since we already have doLogin and doSignUp in the code.js file
-    // that does this already. Check with team to see what route we wish to take.
 
+    // This code is an event handler that will take the form data and transform it into a JSON
+    // to send.
     registerData = (event) => {
         var urlBase = 'http://cop4331-project.com/API';
         // Stops form submission if the form is empty or in default state.
@@ -89,7 +88,7 @@ export class SignUp extends Component {
                         /*First Name form data*/
                         <Form id="myForm" noValidate onSubmit={this.registerData}>
                         <Form.Row>
-                            <Form.Group as={Col} md="4" controlId="validationFormik01">
+                            <Form.Group as={Col} md="4" controlId="firstName">
                             <Form.Label>First Name</Form.Label>
                             <Form.Control
                                 type="text"
@@ -104,7 +103,7 @@ export class SignUp extends Component {
                             </Form.Group>
                         
                         {/*Last Name form data*/}
-                            <Form.Group as={Col} md="4" controlId="validationFormik02">
+                            <Form.Group as={Col} md="4" controlId="lastName">
                             <Form.Label>Last Name</Form.Label>
                             <Form.Control
                                 type="text"
@@ -120,7 +119,7 @@ export class SignUp extends Component {
 
                             <Form.Row>
                             {/*User Name form data*/}
-                            <Form.Group as={Col} md="4" controlId="validationFormikUsername">
+                            <Form.Group as={Col} md="4" controlId="username">
                             <Form.Label>Username</Form.Label>
                             <InputGroup>
                                 <InputGroup.Prepend>
@@ -142,7 +141,7 @@ export class SignUp extends Component {
                             </Form.Group>
 
                             {/*Password form data*/}
-                            <Form.Group as={Col} md="4" controlId="validationFormikPassword">
+                            <Form.Group as={Col} md="4" controlId="password">
                             <Form.Label>Password</Form.Label>
                             <InputGroup>
                                 <InputGroup.Prepend>

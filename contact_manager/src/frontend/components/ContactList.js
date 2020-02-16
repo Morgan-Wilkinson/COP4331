@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Table, Container, ButtonToolbar, Button, OverlayTrigger, Popover } from 'react-bootstrap'
 import { Form, FormControl, InputGroup } from 'react-bootstrap'; 
 import AddContact from './AddContact.js'; 
+import DeleteContact from './DeleteContact.js'
 
 export class ContactList extends Component {
     constructor(props) { 
@@ -45,28 +46,6 @@ export class ContactList extends Component {
         } catch (error) {}
     }
 
-    // This deletes a specific contact
-    deleteContact() {
-        // var username = this.props.username
-        if (localStorage.userLogged){
-            var object = {userID: localStorage.getItem('userLogged')};
-        }
-        
-        var json = JSON.stringify(object); 
-        // Send post request to get contacts
-        var urlBase = 'http://cop4331-project.com/API';
-        var url = urlBase + '/SearchAll.php';
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", url, false);
-        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
-        try
-        {
-            xhr.send(json);
-            this.jsonObject = JSON.parse( xhr.responseText );
-        } catch (error) {}
-    }
-
     // This renders the list of contacts in a nice formatted table
     renderTableData() {
         let filteredContacts = this.jsonObject.results.filter(
@@ -84,7 +63,7 @@ export class ContactList extends Component {
                  <td>{person[1]}</td> {/*Last Name*/}
                  <td>{person[2]}</td> {/*Email*/}
                  <td>{person[3]}</td> {/*Phone*/}
-                 <td>{person[4]}</td> {/*UserID/ Delete Button*/}
+                 <td><DeleteContact ID={person[4]}></DeleteContact></td> {/*UserID/ Delete Button*/}
               </tr>
            )
         })

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 export class Header extends Component {
     constructor(props) {
@@ -10,17 +11,26 @@ export class Header extends Component {
         };
     }
 
-    isSignedIn(){
+    signInOut(){
         if (localStorage.userLogged){
-            return <Nav.Link href="/">Sign Out</Nav.Link>
+            return <Button href="/" variant="outline-info">Sign Out</Button>
         }
         else{
             return(
                 <Fragment>
-                    <Nav.Link href="/signin">Sign In</Nav.Link>
-                    <Nav.Link href="/signup">Sign Up</Nav.Link>)
+                    <Button href="/signin" variant="outline-info" className="mr-sm-2">Sign In</Button>
+                    <Button href="/signup" variant="outline-info" className="mr-sm-2">Sign Up</Button>
                 </Fragment>
             );
+        }
+    }
+
+    contactsPageOrHome(){
+        if (localStorage.userLogged){
+            return <Nav.Link href="/contacts">Contacts</Nav.Link>
+        }
+        else{
+            return <Nav.Link href="/">Home</Nav.Link>
         }
     }
 
@@ -32,11 +42,11 @@ export class Header extends Component {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link href="/">Home</Nav.Link>
+                            {this.contactsPageOrHome()}
                             <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
                     <Nav>
-                        {this.isSignedIn()}
+                        {this.signInOut()}
                     </Nav>
                     </Navbar.Collapse>
                 </Navbar>

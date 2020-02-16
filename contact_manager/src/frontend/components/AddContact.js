@@ -52,15 +52,16 @@ export class AddContact extends Component {
 
     render() {
         return (
-            <div>
-                <Card style={{ width: '18rem' }}>
+            <div className="w3-container">
+            
+                <Card bg="light" className="text-center" style={{ width: '20rem' }}>
                     <Card.Body>
                         <Card.Title>Add Contact</Card.Title>
                         <Card.Text>
-
+                        <div className="w3-display-middle">
                             <Form id="myForm" noValidate onSubmit={this.addContact}>
                             <Form.Row>
-                                <Form.Group as={Col} md="4" controlId="firstName">
+                                <Form.Group controlId="firstName">
                                     <Form.Label>First Name</Form.Label>
                                     <Form.Control
                                         type="text"
@@ -74,7 +75,7 @@ export class AddContact extends Component {
                                 
                             <Form.Row>
                                 {/*Last Name form data*/}
-                                <Form.Group as={Col} md="4" controlId="lastName">
+                                <Form.Group controlId="lastName">
                                     <Form.Label>Last Name</Form.Label>
                                     <Form.Control
                                         type="text"
@@ -88,7 +89,7 @@ export class AddContact extends Component {
 
                             <Form.Row>
                                 {/*User Name form data*/}
-                                <Form.Group as={Col} md="4" controlId="email">
+                                <Form.Group controlId="email">
                                 <Form.Label>Email</Form.Label>
                                     <Form.Control
                                         type="text"
@@ -102,7 +103,7 @@ export class AddContact extends Component {
 
                             <Form.Row>
                                 {/*User Name form data*/}
-                                <Form.Group as={Col} md="4" controlId="phoneNumber">
+                                <Form.Group controlId="phoneNumber">
                                     <Form.Label>Phone Number</Form.Label>
                                     <InputGroup>
                                         <InputGroup.Prepend>
@@ -123,9 +124,11 @@ export class AddContact extends Component {
                             </Form.Row>  {/*End of Row*/}
                             <Button type="submit">Submit</Button>
                             </Form>
+                            </div>
                         </Card.Text>
                     </Card.Body>
                 </Card>
+            
             </div>
         )
     }

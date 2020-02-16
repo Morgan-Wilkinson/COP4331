@@ -17,8 +17,8 @@ export class MasterPage extends Component {
                     </p>
 
                     <ButtonToolbar>
-                        <Button href="/signup" variant="primary">Sign Up</Button> 
-                        <Button href="/signin" variant="primary">Sign In</Button>
+                        <Button href="/signup" variant="primary" className="mr-sm-2">Sign Up</Button> 
+                        <Button href="/signin" variant="primary" className="mr-sm-2">Sign In</Button>
                     </ButtonToolbar>
                 </Jumbotron>
             </div>

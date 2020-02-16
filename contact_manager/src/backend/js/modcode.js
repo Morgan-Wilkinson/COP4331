@@ -9,13 +9,13 @@ var contactIDs;
 // Completed
 function doLogin()
 {
-	var login = document.getElementById(/*Input tag*/).value;
-	var password = document.getElementById(/*Input tag*/).value;
-	var hash = md5( password );
+	//var login = document.getElementById(/*Input tag*/).value;
+	//var password = document.getElementById(/*Input tag*/).value;
+	//var hash = md5( password );
 	
 	// document.getElementById(/*Output tag*/).innerHTML = "";
 	
-	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
+	//var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
 	var url = urlBase + '/Login.' + extension;
 	
 	var xhr = new XMLHttpRequest();

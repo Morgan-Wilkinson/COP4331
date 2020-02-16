@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import { Button, ButtonToolbar, Container } from 'react-bootstrap';
+import { Button, ButtonToolbar } from 'react-bootstrap';
 
 export class MasterPage extends Component {
     render() {
@@ -17,8 +17,8 @@ export class MasterPage extends Component {
                     </p>
 
                     <ButtonToolbar>
-                        <Button href="/signup" variant="primary">Sign Up</Button> 
-                        <Button href="/signin" variant="primary">Sign In</Button>
+                        <Button href="/signup" variant="primary" className="mr-sm-2">Sign Up</Button> 
+                        <Button href="/signin" variant="primary" className="mr-sm-2">Sign In</Button>
                     </ButtonToolbar>
                 </Jumbotron>
             </div>

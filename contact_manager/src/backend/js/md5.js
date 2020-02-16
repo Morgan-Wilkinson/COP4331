@@ -400,5 +400,3 @@
     $.md5 = md5
   }
 })(this)
-
-export * from 'md5';

@@ -7,7 +7,6 @@ export class About extends Component {
             <div>
                 <Jumbotron>
                     <h1>Meet the Team!</h1>
-
                     <p>Morgan Wilkinson: Frontend developer</p>
                     <p>Cody Oliver: Backend developer</p>
                     <p>Jared Neumann: Backend developer</p>

@@ -35,7 +35,6 @@ export class AddContact extends Component {
         // Creates Json
         var json = JSON.stringify(object); 
         this.setState({xvalue: json});
-        alert(json);
 
         var url = urlBase + '/AddContact.php';
         var xhr = new XMLHttpRequest();
@@ -46,7 +45,6 @@ export class AddContact extends Component {
         {
             xhr.send(json);
             var jsonObject = JSON.parse( xhr.responseText );
-            alert(jsonObject.success);
         } catch (error) {}
     }
 

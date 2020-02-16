@@ -38,7 +38,7 @@ export class SignUp extends Component {
         var object = {};
         // Assigns the appropriate value and key for each item in the form.
         formData.forEach((value, key) => {object[key] = value});
-        object["password"] = MD5(object["password"])
+        object["password"] = MD5(object["password"]);
         // Creates Json
         var json = JSON.stringify(object); 
         this.setState({xvalue: json});
@@ -52,7 +52,6 @@ export class SignUp extends Component {
         {
             xhr.send(json);
             var jsonObject = JSON.parse( xhr.responseText );
-            console.log(jsonObject.success)
         } catch (error) {}
     }
     
@@ -86,7 +85,7 @@ export class SignUp extends Component {
                         errors,
                     }) => (
                         /*First Name form data*/
-                        <Form id="myForm" noValidate onSubmit={this.registerData}>
+                        <Form id="myForm" onSubmit={this.registerData}>
                         <Form.Row>
                             <Form.Group as={Col} md="4" controlId="firstName">
                             <Form.Label>First Name</Form.Label>

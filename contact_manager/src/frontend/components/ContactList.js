@@ -10,7 +10,6 @@ export class ContactList extends Component {
     }
     // pass in props from SignIn.js like <ContactList username={jsonObject.ID} /> // ID may change in future
     getContacts() {
-        // var username = this.props.username
         if (localStorage.userLogged){
             var object = {userID: localStorage.getItem('userLogged')};
         }
@@ -51,6 +50,7 @@ export class ContactList extends Component {
         } catch (error) {}
     }
 
+    searchContact
     renderTableData() {
         return this.jsonObject.results.map((person, index) => {
            return (

@@ -24,7 +24,7 @@ export class ContactList extends Component {
         this.setState({searchBar: event.target.value.substr(0, 20)});
     }
 
-    // pass in props from SignIn.js like <ContactList username={jsonObject.ID} /> // ID may change in future
+    // This returns all contacts assigned to the logged in user.
     getContacts() {
         if (localStorage.userLogged){
             var object = {userID: localStorage.getItem('userLogged')};
@@ -45,6 +45,7 @@ export class ContactList extends Component {
         } catch (error) {}
     }
 
+    // This deletes a specific contact
     deleteContact() {
         // var username = this.props.username
         if (localStorage.userLogged){
@@ -66,10 +67,7 @@ export class ContactList extends Component {
         } catch (error) {}
     }
 
-    searchContact(){
-
-    }
-
+    // This renders the list of contacts in a nice formatted table
     renderTableData() {
         let filteredContacts = this.jsonObject.results.filter(
             (contact) => {

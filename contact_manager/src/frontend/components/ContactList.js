@@ -73,7 +73,10 @@ export class ContactList extends Component {
     renderTableData() {
         let filteredContacts = this.jsonObject.results.filter(
             (contact) => {
-                return contact[0].toLowerCase().indexOf(this.state.searchBar.toLowerCase()) !== -1;
+                return (
+                    contact[0].toLowerCase().indexOf(this.state.searchBar.toLowerCase()) !== -1 || // First Name
+                    contact[1].toLowerCase().indexOf(this.state.searchBar.toLowerCase()) !== -1 || // Last Name
+                    contact[3].toLowerCase().indexOf(this.state.searchBar.toLowerCase()) !== -1); // Phone
             }
         )
         return filteredContacts.map((person, index) => {

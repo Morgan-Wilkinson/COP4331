@@ -9,13 +9,12 @@
 	}
 	else
 	{
-		$length = count($inData["input"]);
-		for ($i = 0; $i < $length; $i++)
+		$sql = "DELETE FROM contacts WHERE ID='" . $inData["input"]. "'";
+		$result = $conn->query($sql);
+		if ($result == false)
 		{
-			$sql = "DELETE FROM contacts WHERE userID='" . $inData["userID"] . "' and ID='" . $inData["input"][$i] . "'";
-			$result = $conn->query($sql);
-			if ($result == false)
-				returnWithError( "Error in Deleting Contacts" );
+			$conn->close();
+			returnWithError( "Error in Deleting Contacts" );
 		}
 		
 		$conn->close();

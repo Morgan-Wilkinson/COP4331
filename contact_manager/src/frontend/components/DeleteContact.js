@@ -9,22 +9,24 @@ export class DeleteContact extends Component {
     };
 
     deleteContact = (event) => {
-            // var username = this.props.username
-            var object = {input: this.props.ID};
-            
-            var json = JSON.stringify(object); 
-            // Send post request to get contacts
-            var urlBase = 'http://cop4331-project.com/API';
-            var url = urlBase + '/DeleteContact.php';
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", url, true);
-            xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+        // var username = this.props.username
+        var object = {input: this.props.ID};
+        
+        var json = JSON.stringify(object); 
+        // Send post request to get contacts
+        var urlBase = 'http://cop4331-project.com/API';
+        var url = urlBase + '/DeleteContact.php';
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
-            try
-            {
-                xhr.send(json);
-                this.jsonObject = JSON.parse( xhr.responseText );
-            } catch (error) {}
+        try
+        {
+            xhr.send(json);
+            this.jsonObject = JSON.parse( xhr.responseText );
+        } catch (error) {}
+
+        this.setState({ state: this.state });
     }
 
     render() {

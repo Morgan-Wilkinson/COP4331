@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Table, Container, ButtonToolbar, Button, OverlayTrigger, Popover } from 'react-bootstrap'
+import { Table, Container, Button, ButtonToolbar, OverlayTrigger, Popover } from 'react-bootstrap'
 import { Form, FormControl, InputGroup } from 'react-bootstrap'; 
 import AddContact from './AddContact.js'; 
 import DeleteContact from './DeleteContact.js'
+import EditContact from './EditContact.js'
 
 export class ContactList extends Component {
     constructor(props) { 
@@ -14,6 +15,11 @@ export class ContactList extends Component {
             searchBar: "",
         };
     }
+
+    reloadPage(){
+        // It simply sets the state to its current value
+        this.setState({ state: this.state });
+    };
 
     changeHandler = (event) => {
         let nam = event.target.name;
@@ -63,7 +69,7 @@ export class ContactList extends Component {
                  <td>{person[1]}</td> {/*Last Name*/}
                  <td>{person[2]}</td> {/*Email*/}
                  <td>{person[3]}</td> {/*Phone*/}
-                 <td><DeleteContact ID={person[4]}></DeleteContact></td> {/*UserID/ Delete Button*/}
+                 <td><DeleteContact ID={person[4]}></DeleteContact><EditContact contacts={person}/></td> {/*UserID/ Delete Button*/}
               </tr>
            )
         })
@@ -72,7 +78,7 @@ export class ContactList extends Component {
 
     render() {
         return (
-                <div className="w3-container">
+                <div>
                     {this.getContacts()}
                     <Container fluid='true'>
                     <InputGroup className="mb-3">
@@ -92,30 +98,14 @@ export class ContactList extends Component {
                                     <th>Last Name</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
-                                    <th><span className="glyphicon glyphicon-trash" aria-hidden="true"></span></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.renderTableData()}
+                                <td colSpan="5"><AddContact/></td>              
                             </tbody>
                         </Table>
-                        <div classNamec="w3-display-middle">
-                        <ButtonToolbar>
-                        {['left'].map(placement => (
-                            <OverlayTrigger
-                                trigger="click"
-                                key={placement}
-                                placement={'auto'}
-                                overlay={
-                                    <Popover id='addContact'>
-                                        <AddContact/>
-                                    </Popover>
-                                }>
-                                <Button variant="primary">Add Contact</Button>
-                            </OverlayTrigger>
-                        ))}
-                    </ButtonToolbar>
-                    </div>
                     </Container>
             </div>
         )

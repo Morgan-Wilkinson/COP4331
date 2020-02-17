@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Form, Popover, Button, ButtonToolbar, FormGroup, InputGroup, Col } from 'react-bootstrap'; 
+import { Table, Form, Popover, Button, ButtonToolbar, FormGroup, InputGroup, Col } from 'react-bootstrap'; 
 
 export class AddContact extends Component {
     constructor(props) {
@@ -46,89 +46,71 @@ export class AddContact extends Component {
             xhr.send(json);
             var jsonObject = JSON.parse( xhr.responseText );
         } catch (error) {}
+
+        this.setState({ state: this.state });
     }
 
     render() {
         return (
-            <div className="w3-container">
-            
-                <Card bg="light" className="text-center" style={{ width: '20rem' }}>
-                    <Card.Body>
-                        <Card.Title>Add Contact</Card.Title>
-                        <Card.Text>
-                        <div className="w3-display-middle">
-                            <Form id="myForm" noValidate onSubmit={this.addContact}>
-                            <Form.Row>
-                                <Form.Group controlId="firstName">
-                                    <Form.Label>First Name</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="First Name"
-                                        name="firstName"
-                                        value={this.state.firstName}
-                                        onChange={this.changeHandler}
-                                    />
-                                </Form.Group>
-                            </Form.Row>
-                                
-                            <Form.Row>
-                                {/*Last Name form data*/}
-                                <Form.Group controlId="lastName">
-                                    <Form.Label>Last Name</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Last Name"
-                                        name="lastName"
-                                        value={this.state.lastName}
-                                        onChange={this.changeHandler}
-                                    />
-                                </Form.Group>
-                            </Form.Row> {/*End of Row*/}
+            <div>
+                <Table responsive variant="dark">
+                    <tbody>
+                        <Form id="myForm" noValidate onSubmit={this.addContact}>
+                        <Form.Row>
+                            <Form.Group as={Col} controlId="firstName">
+                                <Form.Control
+                                    type="text"
+                                    placeholder="First Name"
+                                    name="firstName"
+                                    value={this.state.firstName}
+                                    onChange={this.changeHandler}
+                                />
+                            </Form.Group>
+                        {/*Last Name form data*/}
+                            <Form.Group as={Col} controlId="lastName">
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Last Name"
+                                    name="lastName"
+                                    value={this.state.lastName}
+                                    onChange={this.changeHandler}
+                                />
+                            </Form.Group>
+                        {/*User Name form data*/}
 
-                            <Form.Row>
-                                {/*User Name form data*/}
-                                <Form.Group controlId="email">
-                                <Form.Label>Email</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Email"
-                                        name="email"
-                                        value={this.state.email}
-                                        onChange={this.changeHandler}
-                                    />
-                                </Form.Group>
-                            </Form.Row>  {/*End of Row*/}
+                            <Form.Group as={Col} controlId="email">
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Email"
+                                    name="email"
+                                    value={this.state.email}
+                                    onChange={this.changeHandler}
+                                />
+                            </Form.Group>
 
-                            <Form.Row>
-                                {/*User Name form data*/}
-                                <Form.Group controlId="phoneNumber">
-                                    <Form.Label>Phone Number</Form.Label>
-                                    <InputGroup>
-                                        <InputGroup.Prepend>
-                                        <InputGroup.Text id="inputGroupPrepend">#</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <Form.Control
+                        {/*User Name form data*/}
+                            <Form.Group as={Col} controlId="phoneNumber">
+                                <InputGroup>
+                                    <InputGroup.Prepend>
+                                    <InputGroup.Text id="inputGroupPrepend">#</InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <Form.Control
                                         type="text"
                                         placeholder="Phone Number"
                                         aria-describedby="inputGroupPrepend"
                                         name="phoneNumber"
                                         value={this.state.username}
                                         onChange={this.changeHandler}
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                        </Form.Control.Feedback>
-                                    </InputGroup>
-                                </Form.Group>
-                            </Form.Row>  {/*End of Row*/}
-                            <Button type="submit">Submit</Button>
-                            </Form>
-                            </div>
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            
+                                    />
+                                </InputGroup>
+                            </Form.Group>
+                        <Button as={Col} type="submit">Submit</Button>
+                        </Form.Row>
+                        </Form>
+                    </tbody>
+                </Table>
             </div>
-        )
+)
     }
 }
 

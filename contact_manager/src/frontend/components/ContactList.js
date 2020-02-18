@@ -70,7 +70,7 @@ export class ContactList extends Component {
                  <td>{person[2]}</td> {/*Email*/}
                  <td>{person[3]}</td> {/*Phone*/}
                  <td><DeleteContact ID={person[4]}/></td> {/*UserID/ Delete Button*/}
-                 <td><EditContact contacts={person}/></td>
+                 <td><EditContact contacts={person}></EditContact></td>
               </tr>
            )
         })

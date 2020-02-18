@@ -110,7 +110,7 @@ export class AddContact extends Component {
                     </tbody>
                 </Table>
             </div>
-)
+);
     }
 }
 

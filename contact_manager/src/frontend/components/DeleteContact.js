@@ -26,7 +26,7 @@ export class DeleteContact extends Component {
             this.jsonObject = JSON.parse( xhr.responseText );
         } catch (error) {}
 
-        this.setState({ state: this.state });
+        window.location.href = '/contacts'
     }
 
     render() {
@@ -43,14 +43,16 @@ export class DeleteContact extends Component {
                             <Popover id={'deleteButton'}>
                             <Popover.Title as="h3">Delete Confirmation</Popover.Title>
                             <Popover.Content>
-                                Are you sure you wish to delete this contact?
-                                <Button variant="secondary" size="sm" type='button' onClick={this.deleteContact}>Yes</Button>
-                                <Button variant="secondary" size="sm" type='button' >No</Button>
+                                <p>
+                                    Are you sure you wish to delete this contact?
+                                </p>
+                                <Button variant="secondary" className="m-sm-1" size="sm" type='button' onClick={this.deleteContact}>Yes</Button>
+                                <Button variant="secondary" className="m-sm-1" size="sm" type='button' >No</Button>
                             </Popover.Content>
                             </Popover>
                         }
                         >
-                        <Button variant="secondary"><img src={Trash} width="20" height="20"/></Button>
+                        <Button variant="secondary" className="m-sm-1"><img src={Trash} width="20" height="20"/></Button>
                         </OverlayTrigger>
                     ))}
                 </ButtonToolbar>

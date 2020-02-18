@@ -69,7 +69,8 @@ export class ContactList extends Component {
                  <td>{person[1]}</td> {/*Last Name*/}
                  <td>{person[2]}</td> {/*Email*/}
                  <td>{person[3]}</td> {/*Phone*/}
-                 <td><DeleteContact ID={person[4]}></DeleteContact><EditContact contacts={person}/></td> {/*UserID/ Delete Button*/}
+                 <td><DeleteContact ID={person[4]}/></td> {/*UserID/ Delete Button*/}
+                 <td><EditContact contacts={person}/></td>
               </tr>
            )
         })
@@ -91,19 +92,19 @@ export class ContactList extends Component {
                                 onChange={this.updateSearch.bind(this)}
                             />
                         </InputGroup>
-                        <Table responsive hover variant="dark">
+                        <Table responsive variant="dark" size="md">
                             <thead>
                                 <tr>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
-                                    <th></th>
+                                    <th colSpan="2"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.renderTableData()}
-                                <td colSpan="5"><AddContact/></td>              
+                                <td colSpan="6"><AddContact/></td>              
                             </tbody>
                         </Table>
                     </Container>

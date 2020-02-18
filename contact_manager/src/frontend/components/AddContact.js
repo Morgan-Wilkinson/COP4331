@@ -48,12 +48,13 @@ export class AddContact extends Component {
         } catch (error) {}
 
         this.setState({ state: this.state });
+        window.location.href = '/contacts'
     }
 
     render() {
         return (
             <div>
-                <Table responsive variant="dark">
+                <Table responsive variant="dark" size="sm" bordered>
                     <tbody>
                         <Form id="myForm" noValidate onSubmit={this.addContact}>
                         <Form.Row>
@@ -104,7 +105,7 @@ export class AddContact extends Component {
                                     />
                                 </InputGroup>
                             </Form.Group>
-                        <Button as={Col} type="submit">Submit</Button>
+                        <Button type="submit" className="mb-sm-3">Submit</Button>
                         </Form.Row>
                         </Form>
                     </tbody>

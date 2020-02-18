@@ -12,7 +12,7 @@ export class EditContact extends Component {
             lastName: this.props.contacts[1],
             email: this.props.contacts[2],
             phoneNumber: this.props.contacts[3],
-            ID: localStorage.getItem('userLogged')
+            ID: this.props.contacts[4]
         };
         
     }
@@ -41,13 +41,11 @@ export class EditContact extends Component {
         xhr.open("POST", url, false);
         xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
-        alert(json)
         try
         {
             xhr.send(json);
             var jsonObject = JSON.parse( xhr.responseText );
         } catch (error) {}
-       
         window.location.href = '/contacts'
     }
     
@@ -61,8 +59,11 @@ export class EditContact extends Component {
                                 ref={(ref) => this.overlay = ref}
                                 trigger="click"
                                 key={'auto'}
-                                placement={'auto'}
+                                placement={'auto-end'}
                                 overlay={
+                                    <Popover id="edit">
+                                    <Popover.Title as="h3">Edit</Popover.Title>
+                                        <Popover.Content>
                                         <Form id="myForm" onSubmit={this.editData}>
                                             <Form.Row>
                                                 <Form.Group controlId="firstName">
@@ -125,6 +126,8 @@ export class EditContact extends Component {
                                             </Form.Row>
                                             <Button className="mb-sm-3" type="submit">Update</Button>
                                         </Form>
+                                        </Popover.Content>
+                                    </Popover>
                                 }
                                 >
                                 <Button variant="secondary" className="m-sm-1"> <img src={Edit} width="20" height="20"/> </Button>

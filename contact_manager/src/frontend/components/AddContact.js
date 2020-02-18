@@ -47,7 +47,6 @@ export class AddContact extends Component {
             var jsonObject = JSON.parse( xhr.responseText );
         } catch (error) {}
 
-        this.setState({ state: this.state });
         window.location.href = '/contacts'
     }
 
@@ -105,7 +104,7 @@ export class AddContact extends Component {
                                     />
                                 </InputGroup>
                             </Form.Group>
-                        <Button type="submit" className="mb-sm-3">Submit</Button>
+                        <Button type="submit" className="mb-sm-3">Add</Button>
                         </Form.Row>
                         </Form>
                     </tbody>

@@ -23,10 +23,11 @@ export class DeleteContact extends Component {
         try
         {
             xhr.send(json);
-            this.jsonObject = JSON.parse( xhr.responseText );
+            var jsonObject = JSON.parse( xhr.responseText );
         } catch (error) {}
-
-        window.location.href = '/contacts'
+        
+        setTimeout(window.location.href = '/contacts', 4000);
+        
     }
 
     render() {
